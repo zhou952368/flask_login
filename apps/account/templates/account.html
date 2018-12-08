@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+         body{
+            background: url('/apps/static/img/snow.jpg');
+        }
+        .head_div{
+            margin: 10% 30%;
+            {#border: 1px solid cornflowerblue;#}
+            background: cornflowerblue;
+        }
+        .head_div>p{
+            font-size: 30px;
+            text-align: center;
+            padding-top: 10px;
+        }
+         .input_div{
+            margin-bottom: 25px;
+        }
+        .input_div>label{
+            display: block;
+            font-size: 20px;
+            {#height: 40px;#}
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            margin-left: 10px;
+        }
+        .input_div>input{
+            width: 99%;
+            height: 40px;
+            background: none;
+            border: 1px solid black;
+        }
+       .input_a{
+           display: block;
+           width: 99%;
+           height: 40px;
+           background: none;
+           border: 1px solid black;
+           {#font-size: 20px;#}
+           text-align: center;
+           margin-top: 25px;
+       }
+    </style>
+</head>
+<body>
+{% if msg %}
+    {{ msg }}
+{% endif %}
+<div class="head_div">
+    <p>登录</p>
+    <form action="{{ url_for('account.login') }}" method="post">
+        <div class="input_div">
+            <label for="">用户名:</label>
+            <input type="text" name="username">
+        </div>
+        <div class="input_div">
+            <label for="">密码:</label>
+            <input type="password" name="password">
+        </div>
+        <div class="input_div">
+            <input type="submit" value="登录">
+            <a href="{{ url_for('account.register') }}" class="input_a">注册</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

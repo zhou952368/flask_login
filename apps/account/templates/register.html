@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body{
+            background: url('/apps/static/img/snow.jpg');
+        }
+        .head_div{
+            margin: 10% 30%;
+            {#border: 1px solid cornflowerblue;#}
+            background: cornflowerblue;
+        }
+        .head_div>p{
+            font-size: 30px;
+            text-align: center;
+            padding-top: 10px;
+        }
+         .input_div{
+            margin-bottom: 25px;
+        }
+        .input_div>label{
+            display: block;
+            font-size: 20px;
+            {#height: 40px;#}
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            margin-left: 10px;
+        }
+        .input_div>input{
+            width: 99%;
+            height: 40px;
+            background: none;
+            border: 1px solid black;
+        }
+       .input_a{
+           display: block;
+           width: 99%;
+           height: 40px;
+           background: none;
+           border: 1px solid black;
+           {#font-size: 20px;#}
+           text-align: center;
+           margin-top: 25px;
+       }
+    </style>
+</head>
+<body>
+{% if msg %}
+    {{ msg }}
+{% endif %}
+<div class="head_div">
+    <p>注册</p>
+    <form action="{{ url_for('account.register') }}" method="post">
+    <div class="input_div">
+        <label for="">用户名:</label>
+        <input type="text" name="username" placeholder="请输入您的用户名" required>
+    </div>
+    <div class="input_div">
+        <label for="">邮箱:</label>
+        <input type="email" name="email" placeholder="请输入您的邮箱" required>
+    </div>
+    <div class="input_div">
+        <label for="">手机号:</label>
+        <input type="number" name="phone" pattern="^(13\d|14[5|7]|15\d|166|17[3|6|7]|18\d)\d{8}$" placeholder="请输入您的手机号" required>
+    </div>
+    <div class="input_div">
+        <label for="">密码:</label>
+        <input type="password" name="password" placeholder="请输入密码" data-error="密码最小长度为6位" required>
+    </div>
+    <div class="input_div">
+        <label for="">确认密码:</label>
+        <input type="password" name="confirm_password" placeholder="请再次输入密码" data-error="两次输入不一致" required>
+    </div>
+    <div class="input_div">
+        <input type="submit" value="注册">
+        <a href="{{ url_for('account.login') }}" class="input_a">返回</a>
+    </div>
+</form>
+</div>
+</body>
+</html>
